@@ -77,4 +77,12 @@ public class configReader {
 
     }
 
+    public String getExcelPath(){
+
+        String excelPath = properties.getProperty("excelPath");
+        if(excelPath!=null) return excelPath;
+        else throw new RuntimeException("apk Path not found");
+
+    }
+
 }
