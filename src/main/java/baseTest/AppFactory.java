@@ -12,8 +12,8 @@ import java.net.URL;
 public class AppFactory {
 
     public AndroidDriver driver;
-
     public static utilities.configReader configReader;
+    String currentUserHomeDir = System.getProperty("user.dir");
 
     public void initializer() throws MalformedURLException {
 
@@ -24,7 +24,7 @@ public class AppFactory {
         cap.setCapability(MobileCapabilityType.PLATFORM_VERSION, configReader.getPlatformVersion());
         cap.setCapability(MobileCapabilityType.DEVICE_NAME, configReader.getDeviceName());
         cap.setCapability("newCommandTimeout", 100000);
-        cap.setCapability(MobileCapabilityType.APP, configReader.getApkPath());
+        cap.setCapability(MobileCapabilityType.APP, currentUserHomeDir + configReader.getApkPath());
 
         URL url = new URL(configReader.getServerURL());
 

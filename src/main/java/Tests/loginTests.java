@@ -1,6 +1,7 @@
 package Tests;
 
 import baseTest.AppFactory;
+import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.AfterTest;
 import org.testng.annotations.BeforeTest;
@@ -29,6 +30,11 @@ public class loginTests {
     }
 
     @Test
+    @Epic("Booking.com - Final Assignment")
+    @Feature("Account Creation")
+    @Description("To verify user can create New Account")
+    @Story("User should be able to create New Account for Login into the application")
+    @Severity(SeverityLevel.CRITICAL)
     public void createAccount(){
 
         String email = "atif" + rand() + excelReader.GetCellValue(1,0);
