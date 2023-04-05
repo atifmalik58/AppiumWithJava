@@ -3,9 +3,7 @@ package Tests;
 import baseTest.AppFactory;
 import io.qameta.allure.*;
 import org.testng.Assert;
-import org.testng.annotations.AfterTest;
-import org.testng.annotations.BeforeTest;
-import org.testng.annotations.Test;
+import org.testng.annotations.*;
 import pages.signUpPage;
 import utilities.excelReader;
 
@@ -19,7 +17,7 @@ public class signUpTests {
     signUpPage signUp;
     AppFactory factory;
 
-    @BeforeTest
+    @BeforeMethod
     public void setup() throws MalformedURLException {
 
         excel_reader = new excelReader();
@@ -49,7 +47,29 @@ public class signUpTests {
         signUp.verifyAccountCreated();
     }
 
-    @AfterTest
+    @Test
+    @Epic("Booking.com - Final Assignment")
+    @Feature("Account Creation")
+    @Description("To verify the validation message of confirm password")
+    @Story("System should show validation message when confirm password does not match")
+    @Severity(SeverityLevel.CRITICAL)
+    public void incorrectConfirmPassword(){
+
+        String email = "final" + rand() + excelReader.GetCellValue(1,0);
+        String password = excelReader.GetCellValue(1,1);
+        signUp.clickOnCreateAccount();
+        signUp.enterEmail(email);
+        signUp.clickOnContinueBtn();
+        Assert.assertTrue(signUp.title_header.isDisplayed());
+        signUp.enterPassword(password);
+        signUp.enterConfirmPassword("incorrect password");
+        signUp.createAccountBtn();
+        Assert.assertEquals(signUp.getConfirmPasswordErrorMessage(),"This password doesn't match");
+        signUp.navigateBack();
+        signUp.navigateBack();
+    }
+
+    @AfterMethod
     public void quitDriver(){ factory.quitDriver(); }
     public int rand(){
         Random r = new Random();

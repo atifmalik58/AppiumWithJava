@@ -35,6 +35,9 @@ public class signUpPage {
     @FindBy(id = "com.booking:id/text_input_end_icon")
     public List<WebElement> password_imageEyeIcon;
 
+    @FindBy(id = "com.booking:id/textinput_error")
+    public WebElement password_errorMessage;
+
     @FindBy(id = "com.booking:id/identity_header_title")
     public WebElement title_header;
 
@@ -53,6 +56,8 @@ public class signUpPage {
     @FindBy(id = "com.booking:id/facet_profile_header_avatar")
     public WebElement profile_avatar;
 
+    @FindBy(xpath = "//*[@content-desc='Navigate up']")
+    public WebElement back_navigation;
 
     public void waitForElement(WebDriver d, WebElement elem){
 
@@ -102,6 +107,7 @@ public class signUpPage {
         create_account_btn.click();
     }
 
+
     public void verifyAccountCreated(){
 
         waitForElement(AppDriver.getDriver(), welcome_text);
@@ -111,5 +117,15 @@ public class signUpPage {
         Assert.assertTrue(profile_avatar.isDisplayed());
     }
 
+    public String getConfirmPasswordErrorMessage(){
+
+        waitForElement(AppDriver.getDriver(), password_errorMessage);
+        return password_errorMessage.getText();
+    }
+
+    public void navigateBack(){
+
+        back_navigation.click();
+    }
 
 }

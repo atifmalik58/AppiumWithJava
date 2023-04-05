@@ -5,6 +5,7 @@
         <classes>
             <class name="Tests.signUpTests">
                 <methods>
+                    <include name="incorrectConfirmPassword"/>
                     <include name="createAccount"/>
                 </methods>
             </class>
