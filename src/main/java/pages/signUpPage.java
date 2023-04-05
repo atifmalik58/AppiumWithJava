@@ -1,13 +1,11 @@
 package pages;
 
 import baseTest.AppDriver;
-import io.appium.java_client.AppiumDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedCondition;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
@@ -15,9 +13,9 @@ import org.testng.Assert;
 import java.time.Duration;
 import java.util.List;
 
-public class loginPage {
+public class signUpPage {
 
-    public loginPage(){
+    public signUpPage(){
 
         PageFactory.initElements(new AppiumFieldDecorator(AppDriver.getDriver()), this);
     }
@@ -46,6 +44,14 @@ public class loginPage {
     @FindBy(id = "com.booking:id/genius_onbaording_bottomsheet_title")
     public WebElement welcome_text;
 
+    @FindBy(id = "com.booking:id/genius_onbaording_bottomsheet_cta")
+    public WebElement welcome_popup_btn;
+
+    @FindBy(xpath = "//*[@content-desc='Profile']")
+    public WebElement profile_navigation;
+
+    @FindBy(id = "com.booking:id/facet_profile_header_avatar")
+    public WebElement profile_avatar;
 
 
     public void waitForElement(WebDriver d, WebElement elem){
@@ -100,5 +106,10 @@ public class loginPage {
 
         waitForElement(AppDriver.getDriver(), welcome_text);
         Assert.assertTrue(welcome_text.isDisplayed());
+        welcome_popup_btn.click();
+        profile_navigation.click();
+        Assert.assertTrue(profile_avatar.isDisplayed());
     }
+
+
 }
