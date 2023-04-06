@@ -18,6 +18,8 @@ public class signUpPage {
     @FindBy(id = "com.booking:id/identity_account_start")
     public WebElement sign_withEmail;
 
+    @FindBy(xpath = "//*[@text = 'Enter your email address']")
+    public WebElement email_header_title;
     @FindBy(id = "com.booking:id/identity_text_input_edit_text")
     public WebElement userName_txtField;
 
@@ -33,23 +35,8 @@ public class signUpPage {
     @FindBy(id = "com.booking:id/textinput_error")
     public WebElement password_errorMessage;
 
-    @FindBy(id = "com.booking:id/identity_header_title")
-    public WebElement title_header;
-
     @FindBy(id = "com.booking:id/identity_landing_social_button_text")
     public WebElement create_account_btn;
-
-    @FindBy(id = "com.booking:id/genius_onbaording_bottomsheet_title")
-    public WebElement welcome_text;
-
-    @FindBy(id = "com.booking:id/genius_onbaording_bottomsheet_cta")
-    public WebElement welcome_popup_btn;
-
-    @FindBy(xpath = "//*[@content-desc='Profile']")
-    public WebElement profile_navigation;
-
-    @FindBy(id = "com.booking:id/facet_profile_header_avatar")
-    public WebElement profile_avatar;
 
     @FindBy(xpath = "//*[@content-desc='Navigate up']")
     public WebElement back_navigation;
@@ -63,6 +50,12 @@ public class signUpPage {
 
         AppDriver.waitForElement(continue_btn).click();
     }
+
+    public String getEmailHeaderTitle(){
+
+        return AppDriver.waitForElement(email_header_title).getText();
+    }
+
     public void enterEmail(String email){
 
         AppDriver.waitForElement(userName_txtField).sendKeys(email);

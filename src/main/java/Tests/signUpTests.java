@@ -42,9 +42,9 @@ public class signUpTests {
         String email = "final" + rand() + excelReader.GetCellValue(1,0);
         String password = excelReader.GetCellValue(1,1);
         signUp.clickOnCreateAccount();
+        Assert.assertEquals(signUp.getEmailHeaderTitle(),"Enter your email address");
         signUp.enterEmail(email);
         signUp.clickOnContinueBtn();
-        Assert.assertTrue(signUp.title_header.isDisplayed());
         signUp.enterPassword(password);
         signUp.enterConfirmPassword(password);
         signUp.createAccountBtn();
@@ -62,9 +62,9 @@ public class signUpTests {
         String email = "final" + rand() + excelReader.GetCellValue(1,0);
         String password = excelReader.GetCellValue(1,1);
         signUp.clickOnCreateAccount();
+        Assert.assertEquals(signUp.getEmailHeaderTitle(),"Enter your email address");
         signUp.enterEmail(email);
         signUp.clickOnContinueBtn();
-        Assert.assertTrue(signUp.title_header.isDisplayed());
         signUp.enterPassword(password);
         signUp.enterConfirmPassword("incorrect password");
         signUp.createAccountBtn();

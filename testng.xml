@@ -9,6 +9,11 @@
                     <include name="createAccount"/>
                 </methods>
             </class>
+            <class name="Tests.signInTests">
+                <methods>
+                    <include name="loginUser"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
