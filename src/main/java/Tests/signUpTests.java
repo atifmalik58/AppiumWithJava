@@ -39,7 +39,7 @@ public class signUpTests {
     @Severity(SeverityLevel.CRITICAL)
     public void createAccount(){
 
-        String email = "final" + rand() + excelReader.GetCellValue(1,0);
+        String email = "JavaAppium" + rand() + excelReader.GetCellValue(1,0);
         String password = excelReader.GetCellValue(1,1);
         signUp.clickOnCreateAccount();
         Assert.assertEquals(signUp.getEmailHeaderTitle(),"Enter your email address");
@@ -59,7 +59,7 @@ public class signUpTests {
     @Severity(SeverityLevel.CRITICAL)
     public void incorrectConfirmPassword(){
 
-        String email = "final" + rand() + excelReader.GetCellValue(1,0);
+        String email = "JavaAppium" + rand() + excelReader.GetCellValue(1,0);
         String password = excelReader.GetCellValue(1,1);
         signUp.clickOnCreateAccount();
         Assert.assertEquals(signUp.getEmailHeaderTitle(),"Enter your email address");

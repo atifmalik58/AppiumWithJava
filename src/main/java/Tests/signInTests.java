@@ -38,13 +38,7 @@ public class signInTests {
 
         String email = config.getEmail();
         String password = config.getPassword();
-        signIn.clickOnLoginWithEmail();
-        signIn.enterEmail(email);
-        signIn.clickOnContinueBtn();
-        Assert.assertEquals(signIn.getPasswordHeaderDescription(),
-                "Enter your Booking.com password for "+email+".");
-        signIn.enterPassword(password);
-        signIn.clickLoginBtn();
+        signIn.loginWithValidCredentials(email, password);
         home.verifyLoginIsSuccessful();
     }
 

@@ -5,6 +5,7 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
+import org.testng.Assert;
 
 public class signInPage {
 
@@ -83,6 +84,17 @@ public class signInPage {
 
         AppDriver.waitForElement(password_errorMessage);
         return password_errorMessage.getText();
+    }
+
+    public void loginWithValidCredentials(String email, String password){
+
+        clickOnLoginWithEmail();
+        enterEmail(email);
+        clickOnContinueBtn();
+        Assert.assertEquals(getPasswordHeaderDescription(),
+                "Enter your Booking.com password for "+email+".");
+        enterPassword(password);
+        clickLoginBtn();
     }
 
 }

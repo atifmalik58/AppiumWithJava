@@ -15,6 +15,12 @@
                     <include name="loginWithIncorrectPassword"/>
                 </methods>
             </class>
+            <class name="Tests.searchTests">
+                <methods>
+                    <include name="searchHotels"/>
+                    <include name="searchCarRentals"/>
+                </methods>
+            </class>
         </classes>
     </test>
 </suite>
