@@ -2,15 +2,11 @@ package pages;
 
 import baseTest.AppDriver;
 import io.appium.java_client.pagefactory.AppiumFieldDecorator;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 import org.testng.Assert;
 
-import java.time.Duration;
 import java.util.List;
 
 public class signUpPage {
@@ -59,58 +55,40 @@ public class signUpPage {
     @FindBy(xpath = "//*[@content-desc='Navigate up']")
     public WebElement back_navigation;
 
-    public void waitForElement(WebDriver d, WebElement elem){
-
-        WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.visibilityOf(elem));
-    }
-
-    public void waitForElements(WebDriver d, List<WebElement> elem_list){
-
-        WebDriverWait wait = new WebDriverWait(d, Duration.ofSeconds(100));
-        wait.until(ExpectedConditions.visibilityOfAllElements(elem_list));
-
-    }
     public void clickOnCreateAccount(){
 
-        waitForElement(AppDriver.getDriver(), sign_withEmail);
-        sign_withEmail.click();
+        AppDriver.waitForElement(sign_withEmail).click();
     }
 
     public void clickOnContinueBtn(){
 
-        waitForElement(AppDriver.getDriver(), continue_btn);
-        continue_btn.click();
+        AppDriver.waitForElement(continue_btn).click();
     }
     public void enterEmail(String email){
 
-        waitForElement(AppDriver.getDriver(), userName_txtField);
-        userName_txtField.sendKeys(email);
+        AppDriver.waitForElement(userName_txtField).sendKeys(email);
     }
 
     public void enterPassword(String password){
 
-        waitForElements(AppDriver.getDriver(), password_imageEyeIcon);
-        waitForElements(AppDriver.getDriver(), password_txtField);
-        password_txtField.get(0).sendKeys(password);
+        AppDriver.waitForElements(password_imageEyeIcon);
+        AppDriver.waitForElements(password_txtField).get(0).sendKeys(password);
     }
 
     public void enterConfirmPassword(String password){
 
-        waitForElements(AppDriver.getDriver(), password_txtField);
-        password_txtField.get(1).sendKeys(password);
+        AppDriver.waitForElements(password_txtField).get(1).sendKeys(password);
     }
 
     public void createAccountBtn(){
 
-        waitForElement(AppDriver.getDriver(), create_account_btn);
-        create_account_btn.click();
+        AppDriver.waitForElement(create_account_btn).click();
     }
 
 
     public void verifyAccountCreated(){
 
-        waitForElement(AppDriver.getDriver(), welcome_text);
+        AppDriver.waitForElement(welcome_text);
         Assert.assertTrue(welcome_text.isDisplayed());
         welcome_popup_btn.click();
         profile_navigation.click();
@@ -119,7 +97,7 @@ public class signUpPage {
 
     public String getConfirmPasswordErrorMessage(){
 
-        waitForElement(AppDriver.getDriver(), password_errorMessage);
+        AppDriver.waitForElement(password_errorMessage);
         return password_errorMessage.getText();
     }
 
