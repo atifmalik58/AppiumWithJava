@@ -12,6 +12,7 @@
             <class name="Tests.signInTests">
                 <methods>
                     <include name="loginUser"/>
+                    <include name="loginWithIncorrectPassword"/>
                 </methods>
             </class>
         </classes>

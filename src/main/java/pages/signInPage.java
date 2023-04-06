@@ -36,6 +36,9 @@ public class signInPage {
 
     @FindBy(xpath = "//*[@text='Sign in']")
     public WebElement sign_in_btn;
+    @FindBy(id = "com.booking:id/textinput_error")
+    public WebElement password_errorMessage;
+
 
 
     public void clickOnLoginWithEmail(){
@@ -74,6 +77,12 @@ public class signInPage {
     public void clickLoginBtn(){
 
         AppDriver.waitForElement(sign_in_btn).click();
+    }
+
+    public String getIncorrectPasswordErrorMessage(){
+
+        AppDriver.waitForElement(password_errorMessage);
+        return password_errorMessage.getText();
     }
 
 }

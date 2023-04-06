@@ -48,6 +48,27 @@ public class signInTests {
         home.verifyLoginIsSuccessful();
     }
 
+    @Test
+    @Epic("Booking.com - Final Assignment")
+    @Feature("Sign In")
+    @Description("To verify the validation message of incorrect password")
+    @Story("System should show validation message when incorrect password is entered")
+    @Severity(SeverityLevel.CRITICAL)
+    public void loginWithIncorrectPassword(){
+
+        String email = config.getEmail();
+        String password = "Incorrect";
+        signIn.clickOnLoginWithEmail();
+        signIn.enterEmail(email);
+        signIn.clickOnContinueBtn();
+        Assert.assertEquals(signIn.getPasswordHeaderDescription(),
+                "Enter your Booking.com password for "+email+".");
+        signIn.enterPassword(password);
+        signIn.clickLoginBtn();
+        Assert.assertEquals(signIn.getIncorrectPasswordErrorMessage(),
+                "Incorrect password – try again");
+    }
+
     @AfterMethod
     public void quitDriver(){ factory.quitDriver(); }
 
