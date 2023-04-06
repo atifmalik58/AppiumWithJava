@@ -4,6 +4,7 @@ import baseTest.AppFactory;
 import io.qameta.allure.*;
 import org.testng.Assert;
 import org.testng.annotations.*;
+import pages.homePage;
 import pages.signUpPage;
 import utilities.excelReader;
 
@@ -15,6 +16,8 @@ public class signUpTests {
 
     excelReader excel_reader;
     signUpPage signUp;
+
+    homePage home;
     AppFactory factory;
 
     @BeforeMethod
@@ -25,6 +28,7 @@ public class signUpTests {
         factory = new AppFactory();
         factory.initializer();
         signUp = new signUpPage();
+        home = new homePage();
     }
 
     @Test
@@ -44,7 +48,7 @@ public class signUpTests {
         signUp.enterPassword(password);
         signUp.enterConfirmPassword(password);
         signUp.createAccountBtn();
-        signUp.verifyAccountCreated();
+        home.verifyLoginIsSuccessful();
     }
 
     @Test

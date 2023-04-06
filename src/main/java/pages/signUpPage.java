@@ -5,7 +5,6 @@ import io.appium.java_client.pagefactory.AppiumFieldDecorator;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import org.openqa.selenium.support.PageFactory;
-import org.testng.Assert;
 
 import java.util.List;
 
@@ -83,16 +82,6 @@ public class signUpPage {
     public void createAccountBtn(){
 
         AppDriver.waitForElement(create_account_btn).click();
-    }
-
-
-    public void verifyAccountCreated(){
-
-        AppDriver.waitForElement(welcome_text);
-        Assert.assertTrue(welcome_text.isDisplayed());
-        welcome_popup_btn.click();
-        profile_navigation.click();
-        Assert.assertTrue(profile_avatar.isDisplayed());
     }
 
     public String getConfirmPasswordErrorMessage(){

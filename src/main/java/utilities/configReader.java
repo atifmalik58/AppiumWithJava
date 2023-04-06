@@ -85,4 +85,18 @@ public class configReader {
 
     }
 
+    public String getEmail(){
+
+        String userEmail = properties.getProperty("userEmail");
+        if(userEmail!=null) return userEmail;
+        else throw new RuntimeException("User Email not found");
+
+    }
+    public String getPassword(){
+
+        String userPassword = properties.getProperty("userPassword");
+        if(userPassword!=null) return userPassword;
+        else throw new RuntimeException("User Password not found");
+
+    }
 }
